@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <label>Rechercher par nom </label>
+      <input type="text" class="form-control" [(ngModel)]="nomjeu" name="nomjeu"
+             (ngModelChange)="rechercherjeux()" placeholder="Nom du jeu">
+    </div>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr><th>Id</th><th>Nom</th><th>Prix</th><th>Date Création</th><th>Genre</th></tr>
+        </thead>
+        <tbody>
+          @for (jeu of jeux; track jeu.idjeu) {
+            <tr>
+              <td>{{ jeu.idjeu }}</td>
+              <td>{{ jeu.nomjeu }}</td>
+              <td>{{ jeu.prixjeu }}</td>
+              <td>{{ jeu.dateCreation | date:'dd/MM/yyyy' }}</td>
+              <td>{{ jeu.genre?.nomGen ?? 'Pas De Genre' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

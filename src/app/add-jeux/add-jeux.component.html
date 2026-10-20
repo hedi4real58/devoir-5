@@ -1,0 +1,41 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un jeu :</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID jeu</label>
+            <input type="text" [(ngModel)]="newJeu.idjeu" name="idjeu" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom jeu</label>
+            <input type="text" [(ngModel)]="newJeu.nomjeu" name="nomjeu" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix jeu</label>
+            <input type="number" [(ngModel)]="newJeu.prixjeu" name="prixjeu" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création</label>
+            <input type="date" [(ngModel)]="newJeu.dateCreation" name="dateCreation" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Genre</label>
+            <select class="form-control form-control-lg" id="idGen" name="idGen" [(ngModel)]="newidGen">
+                @for (gen of genres; track gen.idGen) {
+                    <option [value]="gen.idGen">{{ gen.nomGen }}</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <h3>{{ message }}</h3>
+        </div>
+
+        <div class="mt-2">
+            <button type="submit" (click)="addJeu()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>
+<router-outlet></router-outlet>

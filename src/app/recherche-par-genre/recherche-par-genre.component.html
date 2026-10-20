@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label>Genres</label>
+    <select class="form-control form-control-lg" id="idGen" name="idGen" [(ngModel)]="IdGen" (change)="onChange()">
+      <option [ngValue]="0">Tous les genres</option>
+      @for (gen of genres; track gen.idGen) {
+        <option [ngValue]="gen.idGen">{{ gen.nomGen }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <h3>Jeux trouvés : {{ jeux.length }}</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr><th>Id</th><th>Nom</th><th>Prix</th><th>Date Création</th><th>Genre</th></tr>
+        </thead>
+        <tbody>
+          @for (jeu of jeux; track jeu.idjeu) {
+            <tr>
+              <td>{{ jeu.idjeu }}</td>
+              <td>{{ jeu.nomjeu }}</td>
+              <td>{{ jeu.prixjeu }}</td>
+              <td>{{ jeu.dateCreation | date:'dd/MM/yyyy' }}</td>
+              @if (jeu.genre) {
+                <td>{{ jeu.genre.nomGen }}</td>
+              } @else {
+                <td>Pas De Genre</td>
+              }
+            </tr>
+          } @empty {
+            <tr><td colspan="5">Aucun jeu trouvé pour ce genre.</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
